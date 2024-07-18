@@ -2,9 +2,9 @@ package tar_test
 
 import (
 	"context"
-	"github.com/viant/afs"
-	"github.com/viant/afs/file"
-	"github.com/viant/afs/tar"
+	"github.com/knights-analytics/afs"
+	"github.com/knights-analytics/afs/file"
+	"github.com/knights-analytics/afs/tar"
 	"log"
 )
 

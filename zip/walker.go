@@ -4,10 +4,10 @@ import (
 	"archive/zip"
 	"bytes"
 	"context"
-	"github.com/viant/afs/file"
-	"github.com/viant/afs/option"
-	"github.com/viant/afs/storage"
-	"github.com/viant/afs/url"
+	"github.com/knights-analytics/afs/file"
+	"github.com/knights-analytics/afs/option"
+	"github.com/knights-analytics/afs/storage"
+	"github.com/knights-analytics/afs/url"
 	"io"
 	"io/ioutil"
 	"path"
@@ -55,7 +55,7 @@ func (w *walker) Walk(ctx context.Context, URL string, handler storage.OnVisit, 
 	if err != nil {
 		return err
 	}
-	//cache is only used if sym link are used
+	// cache is only used if sym link are used
 	for _, fileHandler := range reader.File {
 		parentPath, name := path.Split(fileHandler.Name)
 		fileInfo := fileHandler.FileInfo()
@@ -77,12 +77,12 @@ func (w *walker) Walk(ctx context.Context, URL string, handler storage.OnVisit, 
 	return nil
 }
 
-//NewWalker returns a walker
+// NewWalker returns a walker
 func newWalker(download storage.Opener) *walker {
 	return &walker{Opener: download}
 }
 
-//NewWalker returns a walker
+// NewWalker returns a walker
 func NewWalker(downloader storage.Opener) storage.Walker {
 	return newWalker(downloader)
 }

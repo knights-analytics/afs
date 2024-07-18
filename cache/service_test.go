@@ -2,11 +2,11 @@ package cache
 
 import (
 	"context"
+	"github.com/knights-analytics/afs/asset"
+	"github.com/knights-analytics/afs/file"
+	"github.com/knights-analytics/afs/option"
+	"github.com/knights-analytics/afs/url"
 	"github.com/stretchr/testify/assert"
-	"github.com/viant/afs/asset"
-	"github.com/viant/afs/file"
-	"github.com/viant/afs/option"
-	"github.com/viant/afs/url"
 	"io/ioutil"
 	"os"
 	"path"

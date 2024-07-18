@@ -2,9 +2,9 @@ package file
 
 import (
 	"context"
-	"github.com/viant/afs/option"
-	"github.com/viant/afs/storage"
-	"github.com/viant/afs/url"
+	"github.com/knights-analytics/afs/option"
+	"github.com/knights-analytics/afs/storage"
+	"github.com/knights-analytics/afs/url"
 	"io"
 	"os"
 	"path"
@@ -22,7 +22,7 @@ func NewWriter(_ context.Context, URL string, mode os.FileMode, options ...stora
 	}
 	if flagOpt > 0 {
 		flag |= int(flagOpt)
-	} else { //by default append  is file exists
+	} else { // by default append  is file exists
 		if exists {
 			flag |= os.O_APPEND
 		}

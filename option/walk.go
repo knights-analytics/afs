@@ -1,10 +1,10 @@
 package option
 
 import (
-	"github.com/viant/afs/storage"
+	"github.com/knights-analytics/afs/storage"
 )
 
-//GetWalkOptions returns walk options
+// GetWalkOptions returns walk options
 func GetWalkOptions(options []storage.Option) (Match, Modifier) {
 	var match Match
 	var matcher Matcher

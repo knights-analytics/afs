@@ -3,19 +3,19 @@ package base
 import (
 	"context"
 	"github.com/go-errors/errors"
-	"github.com/viant/afs/option"
-	"github.com/viant/afs/storage"
+	"github.com/knights-analytics/afs/option"
+	"github.com/knights-analytics/afs/storage"
 	"os"
 )
 
 type List func(ctx context.Context, location string, options ...storage.Option) ([]os.FileInfo, error)
 
-//Storager represents a base storager
+// Storager represents a base storager
 type Storager struct {
 	List func(ctx context.Context, location string, options ...storage.Option) ([]os.FileInfo, error)
 }
 
-//Get returns an object for supplied location
+// Get returns an object for supplied location
 func (s *Storager) Get(ctx context.Context, location string, options ...storage.Option) (os.FileInfo, error) {
 	options = append(options, option.NewPage(0, 1))
 	objects, err := s.List(ctx, location, options)

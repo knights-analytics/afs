@@ -2,9 +2,9 @@ package mem
 
 import (
 	"context"
-	"github.com/viant/afs/base"
-	"github.com/viant/afs/option"
-	"github.com/viant/afs/storage"
+	"github.com/knights-analytics/afs/base"
+	"github.com/knights-analytics/afs/option"
+	"github.com/knights-analytics/afs/storage"
 	"io"
 	"net/http"
 	"os"
@@ -64,7 +64,7 @@ func (m *manager) Upload(ctx context.Context, URL string, mode os.FileMode, read
 	return err
 }
 
-//New create a in memory storage
+// New create a in memory storage
 func New(options ...storage.Option) storage.Manager {
 	return newManager(options...)
 }

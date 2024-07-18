@@ -3,8 +3,8 @@ package http
 import (
 	"context"
 	"fmt"
+	"github.com/knights-analytics/afs/url"
 	"github.com/stretchr/testify/assert"
-	"github.com/viant/afs/url"
 	"io/ioutil"
 	"net/http"
 	"strings"

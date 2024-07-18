@@ -2,11 +2,11 @@ package base
 
 import (
 	"context"
-	"github.com/viant/afs/file"
-	"github.com/viant/afs/object"
-	"github.com/viant/afs/option"
-	"github.com/viant/afs/storage"
-	"github.com/viant/afs/url"
+	"github.com/knights-analytics/afs/file"
+	"github.com/knights-analytics/afs/object"
+	"github.com/knights-analytics/afs/option"
+	"github.com/knights-analytics/afs/storage"
+	"github.com/knights-analytics/afs/url"
 	"io"
 	"os"
 	"path"
@@ -184,7 +184,7 @@ func (m *Manager) Storager(ctx context.Context, baseURL string, options []storag
 	}
 	m.mutex.Lock()
 	defer m.mutex.Unlock()
-	//double check if Storager has been added
+	// double check if Storager has been added
 	storager, ok = m.storagers[baseURL]
 	if ok {
 		return storager, nil

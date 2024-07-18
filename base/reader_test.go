@@ -2,8 +2,8 @@ package base
 
 import (
 	"fmt"
+	"github.com/knights-analytics/afs/option"
 	"github.com/stretchr/testify/assert"
-	"github.com/viant/afs/option"
 	"io"
 	"testing"
 )

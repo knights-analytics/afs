@@ -3,8 +3,8 @@ package embed_test
 import (
 	"context"
 	"embed"
+	"github.com/knights-analytics/afs"
 	"github.com/stretchr/testify/assert"
-	"github.com/viant/afs"
 	"strings"
 	"testing"
 )

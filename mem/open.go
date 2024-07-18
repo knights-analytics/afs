@@ -2,12 +2,12 @@ package mem
 
 import (
 	"context"
-	"github.com/viant/afs/option"
-	"github.com/viant/afs/storage"
+	"github.com/knights-analytics/afs/option"
+	"github.com/knights-analytics/afs/storage"
 	"io"
 )
 
-//Open downloads content for the supplied object
+// Open downloads content for the supplied object
 func (s *storager) Open(ctx context.Context, location string, options ...storage.Option) (io.ReadCloser, error) {
 	root := s.Root
 	file, err := root.File(location)

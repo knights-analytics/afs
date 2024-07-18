@@ -3,12 +3,12 @@ package base_test
 import (
 	"context"
 	"fmt"
+	"github.com/knights-analytics/afs"
+	"github.com/knights-analytics/afs/asset"
+	"github.com/knights-analytics/afs/file"
+	"github.com/knights-analytics/afs/mem"
+	"github.com/knights-analytics/afs/url"
 	"github.com/stretchr/testify/assert"
-	"github.com/viant/afs"
-	"github.com/viant/afs/asset"
-	"github.com/viant/afs/file"
-	"github.com/viant/afs/mem"
-	"github.com/viant/afs/url"
 	"testing"
 )
 

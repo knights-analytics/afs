@@ -3,9 +3,9 @@ package afs
 import (
 	"context"
 	"fmt"
+	"github.com/knights-analytics/afs/option"
+	"github.com/knights-analytics/afs/storage"
 	"github.com/stretchr/testify/assert"
-	"github.com/viant/afs/option"
-	"github.com/viant/afs/storage"
 	"io"
 	"io/ioutil"
 	"os"

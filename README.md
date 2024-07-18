@@ -1,7 +1,7 @@
 # afs - abstract file storage
 
-[![GoReportCard](https://goreportcard.com/badge/github.com/viant/afs)](https://goreportcard.com/report/github.com/viant/afs)
-[![GoDoc](https://godoc.org/github.com/viant/afs?status.svg)](https://godoc.org/github.com/viant/afs)
+[![GoReportCard](https://goreportcard.com/badge/github.com/knights-analytics/afs)](https://goreportcard.com/report/github.com/knights-analytics/afs)
+[![GoDoc](https://godoc.org/github.com/knights-analytics/afs?status.svg)](https://godoc.org/github.com/knights-analytics/afs)
 ![goversion-image](https://img.shields.io/badge/Go-1.11+-00ADD8.svg)
 <a href='https://github.com/jpoles1/gopherbadger' target='_blank'>![gopherbadger-tag-do-not-edit](https://img.shields.io/badge/Go%20Coverage-78%25-brightgreen.svg?longCache=true&style=flat)</a>
 
@@ -483,7 +483,7 @@ package main
 import (
 	"context"
 	"log"
-	"github.com/viant/afs"
+	"github.com/knights-analytics/afs"
 	"io"
 	"fmt"
 	"io/ioutil"
@@ -622,8 +622,8 @@ Check out [storage manager](#storage-managers) for additional options.
 - [HTTP](http/README.md)
 - [Tar](tar/README.md)
 - [Zip](zip/README.md)
-- [GCP - GS](https://github.com/viant/afsc/tree/master/gs)
-- [AWS - S3](https://github.com/viant/afsc/tree/master/s3)
+- [GCP - GS](https://github.com/knights-analytics/afsc/tree/master/gs)
+- [AWS - S3](https://github.com/knights-analytics/afsc/tree/master/s3)
 
 ## Testing fs
 
@@ -685,7 +685,7 @@ package main
 
 import (
     "log"
-    "github.com/viant/afs/parrot
+    "github.com/knights-analytics/afs/parrot
 )
 
 func mian() {
@@ -705,7 +705,7 @@ package main
 
 import (
     "log"
-    "github.com/viant/afs/parrot
+    "github.com/knights-analytics/afs/parrot
 )
 
 func mian() {
@@ -777,7 +777,7 @@ func Test_XXX(t *testing.T) {
 
 ## GoCover
 
-[![GoCover](https://gocover.io/github.com/viant/afs)](https://gocover.io/github.com/viant/afs)
+[![GoCover](https://gocover.io/github.com/knights-analytics/afs)](https://gocover.io/github.com/knights-analytics/afs)
 
 
 <a name="License"></a>
@@ -793,4 +793,3 @@ all compatible with Apache License, Version 2. Please see individual files for d
 ## Credits and Acknowledgements
 
 **Library Author:** Adrian Witas
-

@@ -2,10 +2,10 @@ package mem
 
 import (
 	"context"
+	"github.com/knights-analytics/afs/option"
+	"github.com/knights-analytics/afs/storage"
 	"github.com/pkg/errors"
 	"github.com/stretchr/testify/assert"
-	"github.com/viant/afs/option"
-	"github.com/viant/afs/storage"
 	"io"
 	"io/ioutil"
 	"strings"

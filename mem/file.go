@@ -2,11 +2,11 @@ package mem
 
 import (
 	"bytes"
-	"github.com/viant/afs/file"
-	"github.com/viant/afs/object"
-	"github.com/viant/afs/option"
-	"github.com/viant/afs/storage"
-	"github.com/viant/afs/url"
+	"github.com/knights-analytics/afs/file"
+	"github.com/knights-analytics/afs/object"
+	"github.com/knights-analytics/afs/option"
+	"github.com/knights-analytics/afs/storage"
+	"github.com/knights-analytics/afs/url"
 	"io"
 	"io/ioutil"
 	"os"
@@ -15,7 +15,7 @@ import (
 	"time"
 )
 
-//File represents in memory file
+// File represents in memory file
 type File struct {
 	storage.Object
 	content       []byte
@@ -26,7 +26,7 @@ type File struct {
 	generation    int64
 }
 
-//NewReader return new Reader
+// NewReader return new Reader
 func (f *File) NewReader() io.ReadCloser {
 	var reader io.Reader = bytes.NewReader(f.content)
 	if f.readerError != nil {
@@ -35,7 +35,7 @@ func (f *File) NewReader() io.ReadCloser {
 	return ioutil.NopCloser(reader)
 }
 
-//SetErrors sets test errors
+// SetErrors sets test errors
 func (f *File) SetErrors(errors ...*option.Error) {
 	if len(errors) > 0 {
 		for i := range errors {
@@ -51,7 +51,7 @@ func (f *File) SetErrors(errors ...*option.Error) {
 	}
 }
 
-//NewFile create a file
+// NewFile create a file
 func NewFile(URL string, mode os.FileMode, content []byte, modTime time.Time) *File {
 	baseURL, URLPath := Split(URL)
 	URL = url.Join(baseURL, URLPath)

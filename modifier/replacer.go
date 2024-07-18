@@ -1,8 +1,8 @@
 package modifier
 
 import (
-	"github.com/viant/afs/file"
-	"github.com/viant/afs/option"
+	"github.com/knights-analytics/afs/file"
+	"github.com/knights-analytics/afs/option"
 	"io"
 	"os"
 	"strings"

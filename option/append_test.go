@@ -1,8 +1,8 @@
 package option
 
 import (
+	"github.com/knights-analytics/afs/storage"
 	"github.com/stretchr/testify/assert"
-	"github.com/viant/afs/storage"
 	"testing"
 )
 

@@ -2,8 +2,8 @@ package scp
 
 import (
 	"fmt"
+	"github.com/knights-analytics/afs/file"
 	"github.com/pkg/errors"
-	"github.com/viant/afs/file"
 	"os"
 	"strconv"
 	"strings"
@@ -14,7 +14,7 @@ const (
 	DefaultFileMode os.FileMode = 0755
 )
 
-//NewInfo returns new info from SCP response
+// NewInfo returns new info from SCP response
 func NewInfo(createResponse string, modified *time.Time) (os.FileInfo, error) {
 
 	elements := strings.SplitN(createResponse, " ", 3)
@@ -40,7 +40,7 @@ func NewInfo(createResponse string, modified *time.Time) (os.FileInfo, error) {
 	return file.NewInfo(name, size, os.FileMode(mode), *modified, isDir), nil
 }
 
-//ParseTimeResponse parases respons time
+// ParseTimeResponse parases respons time
 func ParseTimeResponse(response string) (*time.Time, error) {
 	elements := strings.SplitN(response, " ", 4)
 	if len(elements) != 4 {
@@ -57,16 +57,16 @@ func ParseTimeResponse(response string) (*time.Time, error) {
 	return &ts, nil
 }
 
-//InfoToTimestampCmd returns scp timestamp command for supplied info
+// InfoToTimestampCmd returns scp timestamp command for supplied info
 func InfoToTimestampCmd(info os.FileInfo) string {
 	unixTimestamp := info.ModTime().Unix()
 	return fmt.Sprintf("T%v 0 %v 0\n", unixTimestamp, unixTimestamp)
 }
 
-//InfoToCreateCmd returns scp create command for supplied info
+// InfoToCreateCmd returns scp create command for supplied info
 func InfoToCreateCmd(info os.FileInfo) string {
 	mode := info.Mode()
-	if mode >= 01000 { //symbolic linkg
+	if mode >= 01000 { // symbolic linkg
 		mode = DefaultFileMode
 	}
 	locationType := "C"

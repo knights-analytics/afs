@@ -3,8 +3,8 @@ package mem_test
 import (
 	"context"
 	"fmt"
-	"github.com/viant/afs"
-	"github.com/viant/afs/mem"
+	"github.com/knights-analytics/afs"
+	"github.com/knights-analytics/afs/mem"
 	"log"
 	"strings"
 )

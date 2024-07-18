@@ -3,9 +3,9 @@ package archive
 import (
 	"context"
 	"fmt"
-	"github.com/viant/afs/asset"
-	"github.com/viant/afs/file"
-	"github.com/viant/afs/storage"
+	"github.com/knights-analytics/afs/asset"
+	"github.com/knights-analytics/afs/file"
+	"github.com/knights-analytics/afs/storage"
 	"io"
 	"io/ioutil"
 	"os"
@@ -13,10 +13,10 @@ import (
 	"strings"
 )
 
-//Modifier represents rewrite modifier
+// Modifier represents rewrite modifier
 type Modifier func(resources []*asset.Resource) ([]*asset.Resource, error)
 
-//Rewrite rewrites content
+// Rewrite rewrites content
 func Rewrite(ctx context.Context, walker storage.Walker, URL string, upload storage.Upload, handler Modifier) error {
 	var resources = make([]*asset.Resource, 0)
 	err := walker.Walk(ctx, URL, func(ctx context.Context, baseURL string, parent string, info os.FileInfo, reader io.Reader) (toContinue bool, err error) {
@@ -62,7 +62,7 @@ func dedupe(resources []*asset.Resource) []*asset.Resource {
 	return result
 }
 
-//DeleteHandler represents on rewrite upload delete handler
+// DeleteHandler represents on rewrite upload delete handler
 func DeleteHandler(location string) func(resources []*asset.Resource) ([]*asset.Resource, error) {
 	return func(resources []*asset.Resource) ([]*asset.Resource, error) {
 		var filtered = make([]*asset.Resource, 0)
@@ -120,7 +120,7 @@ func addResource(existing map[string]*asset.Resource, resource *asset.Resource, 
 	return nil, fmt.Errorf("unable merge parent:%v, loc %v", parent, location)
 }
 
-//CreateHandler represents on rewrite upload create handler
+// CreateHandler represents on rewrite upload create handler
 func CreateHandler(location string, mode os.FileMode, data []byte, isDir bool) func(resources []*asset.Resource) ([]*asset.Resource, error) {
 	return func(resources []*asset.Resource) ([]*asset.Resource, error) {
 		newResource := asset.New(location, mode, isDir, "", data)
@@ -140,7 +140,7 @@ func CreateHandler(location string, mode os.FileMode, data []byte, isDir bool) f
 	}
 }
 
-//UploadHandler represents on rewrite upload create handler
+// UploadHandler represents on rewrite upload create handler
 func UploadHandler(toUpload []*asset.Resource) func(resources []*asset.Resource) ([]*asset.Resource, error) {
 	return func(resources []*asset.Resource) ([]*asset.Resource, error) {
 		var existing = make(map[string]*asset.Resource)
@@ -164,7 +164,7 @@ func UploadHandler(toUpload []*asset.Resource) func(resources []*asset.Resource)
 	}
 }
 
-//UpdateDestination updates resource with specified destination
+// UpdateDestination updates resource with specified destination
 func UpdateDestination(destination string, resources []*asset.Resource) []*asset.Resource {
 	if strings.Trim(destination, "/") == "" {
 		return resources

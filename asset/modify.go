@@ -3,15 +3,15 @@ package asset
 import (
 	"bytes"
 	"context"
-	"github.com/viant/afs/storage"
-	"github.com/viant/afs/url"
+	"github.com/knights-analytics/afs/storage"
+	"github.com/knights-analytics/afs/url"
 	"os"
 	"path"
 	"path/filepath"
 	"time"
 )
 
-//Modify modify supplied assets, links or folders in provided location (for testing purpose)
+// Modify modify supplied assets, links or folders in provided location (for testing purpose)
 func Modify(manager storage.Manager, URL string, resources []*Resource) error {
 	return modify(manager, URL, resources, false)
 }

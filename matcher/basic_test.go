@@ -1,8 +1,8 @@
 package matcher
 
 import (
+	"github.com/knights-analytics/afs/file"
 	"github.com/stretchr/testify/assert"
-	"github.com/viant/afs/file"
 	"path"
 	"testing"
 	"time"

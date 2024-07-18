@@ -2,9 +2,9 @@ package zip_test
 
 import (
 	"context"
-	"github.com/viant/afs"
-	"github.com/viant/afs/file"
-	"github.com/viant/afs/zip"
+	"github.com/knights-analytics/afs"
+	"github.com/knights-analytics/afs/file"
+	"github.com/knights-analytics/afs/zip"
 	"log"
 )
 

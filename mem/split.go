@@ -1,11 +1,11 @@
 package mem
 
 import (
-	"github.com/viant/afs/url"
+	"github.com/knights-analytics/afs/url"
 	"strings"
 )
 
-//SplitPath splits path
+// SplitPath splits path
 func SplitPath(URLPath string) []string {
 	var result = make([]string, 0)
 	var elements = strings.Split(URLPath, "/")
@@ -21,7 +21,7 @@ func SplitPath(URLPath string) []string {
 	return result
 }
 
-//Split split URL with the last URI element and its parent path
+// Split split URL with the last URI element and its parent path
 func Split(URL string) (string, string) {
 	return url.Split(URL, Scheme)
 }

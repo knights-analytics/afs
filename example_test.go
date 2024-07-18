@@ -4,12 +4,12 @@ import (
 	"bytes"
 	"context"
 	"fmt"
-	"github.com/viant/afs"
-	"github.com/viant/afs/asset"
-	"github.com/viant/afs/file"
-	"github.com/viant/afs/matcher"
-	"github.com/viant/afs/option"
-	"github.com/viant/afs/scp"
+	"github.com/knights-analytics/afs"
+	"github.com/knights-analytics/afs/asset"
+	"github.com/knights-analytics/afs/file"
+	"github.com/knights-analytics/afs/matcher"
+	"github.com/knights-analytics/afs/option"
+	"github.com/knights-analytics/afs/scp"
 	"io"
 	"io/ioutil"
 	"log"
@@ -17,7 +17,7 @@ import (
 	"strings"
 )
 
-//ExampleService_List reading location content
+// ExampleService_List reading location content
 func ExampleService_List() {
 	fs := afs.New()
 	ctx := context.Background()
@@ -43,7 +43,7 @@ func ExampleService_List() {
 	}
 }
 
-//ExampleService_Upload uploading content
+// ExampleService_Upload uploading content
 func ExampleService_Upload() {
 	fs := afs.New()
 	ctx := context.Background()
@@ -66,7 +66,7 @@ func ExampleService_Upload() {
 	fmt.Printf("has file: %v\n", ok)
 }
 
-//ExampleService_Copy copy content
+// ExampleService_Copy copy content
 func ExampleService_Copy() {
 	fs := afs.New()
 	ctx := context.Background()
@@ -80,7 +80,7 @@ func ExampleService_Copy() {
 	}
 }
 
-//ExampleService_Move moves content
+// ExampleService_Move moves content
 func ExampleService_Move() {
 	fs := afs.New()
 	ctx := context.Background()
@@ -125,7 +125,7 @@ func ExampleService_Uploader() {
 	}
 }
 
-//Example_DownloadError download error simulation example
+// Example_DownloadError download error simulation example
 func Example_DownloadError() {
 	fs := afs.NewFaker()
 	ctx := context.Background()
@@ -135,7 +135,7 @@ func Example_DownloadError() {
 	}
 }
 
-//Example_DownloadError download error simulation example
+// Example_DownloadError download error simulation example
 func Example_UploadError() {
 	fs := afs.NewFaker()
 	ctx := context.Background()
@@ -149,7 +149,7 @@ func Example_UploadError() {
 	}
 }
 
-//Example_DownloadError download error simulation example
+// Example_DownloadError download error simulation example
 func Example_ReaderError() {
 	fs := afs.NewFaker()
 	ctx := context.Background()

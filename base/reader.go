@@ -1,15 +1,15 @@
 package base
 
 import (
+	"github.com/knights-analytics/afs/option"
 	"github.com/pkg/errors"
-	"github.com/viant/afs/option"
 	"io"
 	"sync"
 )
 
-//RangeHeader represents a range header
+// RangeHeader represents a range header
 const (
-	//RangeHeader represents a range header
+	// RangeHeader represents a range header
 	RangeHeader     = "Range"
 	RangeHeaderTmpl = "bytes=%d-%d"
 )
@@ -99,7 +99,7 @@ func (r *streamReader) Close() error {
 	return nil
 }
 
-//ReadAt added reader at interface
+// ReadAt added reader at interface
 func (r *streamReader) ReadAt(dest []byte, off int64) (n int, err error) {
 	r.mux.Lock()
 	defer r.mux.Unlock()

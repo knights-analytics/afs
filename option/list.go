@@ -1,10 +1,10 @@
 package option
 
 import (
-	"github.com/viant/afs/storage"
+	"github.com/knights-analytics/afs/storage"
 )
 
-//GetListOptions returns list options
+// GetListOptions returns list options
 func GetListOptions(options []storage.Option) (Match, *Page) {
 	var matcher Matcher
 	var match Match

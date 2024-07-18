@@ -3,11 +3,11 @@ package http
 import (
 	"context"
 	"fmt"
-	"github.com/viant/afs/storage"
+	"github.com/knights-analytics/afs/storage"
 	"net/http"
 )
 
-//Delete sends delete method with supplied URL
+// Delete sends delete method with supplied URL
 func (s *manager) Delete(ctx context.Context, URL string, options ...storage.Option) error {
 	request, err := http.NewRequest(http.MethodDelete, URL, nil)
 	if err != nil {

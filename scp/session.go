@@ -4,9 +4,9 @@ import (
 	"bytes"
 	"context"
 	"fmt"
+	"github.com/knights-analytics/afs/file"
+	"github.com/knights-analytics/afs/storage"
 	"github.com/pkg/errors"
-	"github.com/viant/afs/file"
-	"github.com/viant/afs/storage"
 	"golang.org/x/crypto/ssh"
 	"io"
 	"io/ioutil"
@@ -259,7 +259,7 @@ func (s *session) upload(location string) (storage.Upload, io.Closer, error) {
 
 func (s *session) push(info os.FileInfo, reader io.Reader) error {
 	if info.Mode()&os.ModeSymlink > 0 {
-		//update size for symlink, otherwise size may be reported incorrectly
+		// update size for symlink, otherwise size may be reported incorrectly
 		data, _ := ioutil.ReadAll(reader)
 		info = file.NewInfo(info.Name(), int64(len(data)), info.Mode().Perm(), info.ModTime(), info.IsDir())
 		reader = bytes.NewReader(data)

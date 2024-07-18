@@ -2,8 +2,8 @@ package file
 
 import (
 	"context"
+	"github.com/knights-analytics/afs/storage"
 	"github.com/stretchr/testify/assert"
-	"github.com/viant/afs/storage"
 	"io/ioutil"
 	"os"
 	"path"

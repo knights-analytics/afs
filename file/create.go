@@ -2,12 +2,12 @@ package file
 
 import (
 	"context"
-	"github.com/viant/afs/storage"
+	"github.com/knights-analytics/afs/storage"
 	"os"
 	"strings"
 )
 
-//Create creates a new file or directory
+// Create creates a new file or directory
 func Create(ctx context.Context, URL string, mode os.FileMode, isDir bool, options ...storage.Option) error {
 	filePath := Path(URL)
 	if isDir {

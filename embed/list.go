@@ -3,14 +3,13 @@ package embed
 import (
 	"context"
 	"fmt"
-	"github.com/viant/afs/file"
-	"github.com/viant/afs/object"
-	"github.com/viant/afs/option"
-	"github.com/viant/afs/storage"
-	"github.com/viant/afs/url"
+	"github.com/knights-analytics/afs/file"
+	"github.com/knights-analytics/afs/object"
+	"github.com/knights-analytics/afs/option"
+	"github.com/knights-analytics/afs/storage"
+	"github.com/knights-analytics/afs/url"
 	"strings"
 )
-
 
 func (s *manager) List(ctx context.Context, URL string, options ...storage.Option) ([]storage.Object, error) {
 	if s.err != nil {

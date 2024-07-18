@@ -3,10 +3,10 @@ package tar
 import (
 	"bytes"
 	"context"
+	"github.com/knights-analytics/afs/asset"
+	"github.com/knights-analytics/afs/mem"
+	"github.com/knights-analytics/afs/storage"
 	"github.com/stretchr/testify/assert"
-	"github.com/viant/afs/asset"
-	"github.com/viant/afs/mem"
-	"github.com/viant/afs/storage"
 	"io"
 	"io/ioutil"
 	"os"
@@ -31,7 +31,7 @@ func TestNewStorager(t *testing.T) {
 			resource:    asset.NewFile("folder1/res1.txt", []byte("this is test"), 0644),
 		},
 
-		//{
+		// {
 		//	description: "single resource archive",
 		//	baseURL:     "mem:localhost/my002.tar/tar://localhost/",
 		//	resource:    asset.NewFile("folder1/res1.txt", []byte("this is test"), 0644),
@@ -42,7 +42,7 @@ func TestNewStorager(t *testing.T) {
 		//		asset.NewFile("folder2/sub/res3.txt", []byte("xyz"), 0644),
 		//		asset.NewFile("folder2/res4.txt", []byte("xyz"), 0644),
 		//	},
-		//},
+		// },
 	}
 
 	ctx := context.Background()

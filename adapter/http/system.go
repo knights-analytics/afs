@@ -2,9 +2,9 @@ package http
 
 import (
 	"context"
-	"github.com/viant/afs"
-	"github.com/viant/afs/storage"
-	"github.com/viant/afs/url"
+	"github.com/knights-analytics/afs"
+	"github.com/knights-analytics/afs/storage"
+	"github.com/knights-analytics/afs/url"
 	"net/http"
 )
 

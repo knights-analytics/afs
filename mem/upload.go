@@ -3,10 +3,10 @@ package mem
 import (
 	"context"
 	"fmt"
+	"github.com/knights-analytics/afs/file"
+	"github.com/knights-analytics/afs/option"
+	"github.com/knights-analytics/afs/storage"
 	"github.com/pkg/errors"
-	"github.com/viant/afs/file"
-	"github.com/viant/afs/option"
-	"github.com/viant/afs/storage"
 	"io"
 	"io/ioutil"
 	"net/http"
@@ -16,7 +16,7 @@ import (
 
 var preconditionErrorMessage = fmt.Sprintf("precondition failed: %v ", http.StatusPreconditionFailed)
 
-//Upload writes fakeReader TestContent to supplied URL path.
+// Upload writes fakeReader TestContent to supplied URL path.
 func (s *storager) Upload(ctx context.Context, location string, mode os.FileMode, reader io.Reader, options ...storage.Option) error {
 	s.mux.Lock()
 	parent, err := s.parent(location, file.DefaultDirOsMode)

@@ -2,9 +2,9 @@ package walker
 
 import (
 	"context"
+	"github.com/knights-analytics/afs/storage"
+	"github.com/knights-analytics/afs/url"
 	"github.com/pkg/errors"
-	"github.com/viant/afs/storage"
-	"github.com/viant/afs/url"
 	"io"
 	"path"
 )
@@ -13,10 +13,10 @@ type walker struct {
 	storage.Manager
 	counter      uint32
 	locationName string
-	parent string
+	parent       string
 }
 
-//Walk traverses URL and calls handler on all file or folder
+// Walk traverses URL and calls handler on all file or folder
 func (w *walker) Walk(ctx context.Context, URL string, handler storage.OnVisit, options ...storage.Option) error {
 	w.counter = 0
 	_, URLPath := url.Base(URL, w.Manager.Scheme())
@@ -35,7 +35,7 @@ func (w *walker) visitResource(ctx context.Context, object storage.Object, URL, 
 		defer func() { _ = reader.Close() }()
 	}
 	if w.counter == 0 && object.IsDir() && url.Equals(url.Join(w.parent, w.locationName), object.URL()) {
-		//skip base location
+		// skip base location
 		return nil
 	}
 	w.counter++
@@ -58,7 +58,7 @@ func (w *walker) visitResource(ctx context.Context, object storage.Object, URL, 
 	return nil
 }
 
-//Walk traverses URL and calls handler on all file or folder
+// Walk traverses URL and calls handler on all file or folder
 func (w *walker) walk(ctx context.Context, URL, parent string, handler storage.OnVisit, options []storage.Option) error {
 	URL = url.Normalize(URL, w.Scheme())
 	resourceURL := URL
@@ -81,7 +81,7 @@ func (w *walker) walk(ctx context.Context, URL, parent string, handler storage.O
 	return err
 }
 
-//New create a walker for supplied manager
+// New create a walker for supplied manager
 func New(manager storage.Manager) storage.Walker {
 	return &walker{Manager: manager}
 }

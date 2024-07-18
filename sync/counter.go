@@ -4,11 +4,11 @@ import (
 	"bytes"
 	"context"
 	"encoding/json"
-	"github.com/viant/afs"
-	"github.com/viant/afs/base"
-	"github.com/viant/afs/file"
-	"github.com/viant/afs/option"
-	"github.com/viant/afs/url"
+	"github.com/knights-analytics/afs"
+	"github.com/knights-analytics/afs/base"
+	"github.com/knights-analytics/afs/file"
+	"github.com/knights-analytics/afs/option"
+	"github.com/knights-analytics/afs/url"
 	"net/http"
 	"time"
 )
@@ -17,7 +17,7 @@ const (
 	maxRetries = 10
 )
 
-//Counter represents a sync counter
+// Counter represents a sync counter
 type Counter struct {
 	URL   string
 	Data  interface{} `json:",omitempty"`
@@ -25,12 +25,12 @@ type Counter struct {
 	fs    afs.Service
 }
 
-//Increment increments counter
+// Increment increments counter
 func (g *Counter) Increment(ctx context.Context) (int, error) {
 	return g.updateWithRetries(ctx, 1)
 }
 
-//Decrement decrements counter
+// Decrement decrements counter
 func (g *Counter) Decrement(ctx context.Context) (int, error) {
 	return g.updateWithRetries(ctx, -1)
 }
@@ -88,7 +88,7 @@ func (g *Counter) update(ctx context.Context, delta int) (int, error) {
 	return g.Count, err
 }
 
-//Delete deletes counter
+// Delete deletes counter
 func (g *Counter) Delete(ctx context.Context) error {
 	generation := &option.Generation{Generation: 0, WhenMatch: true}
 	ok, _ := g.fs.Exists(ctx, g.URL, generation)
@@ -98,7 +98,7 @@ func (g *Counter) Delete(ctx context.Context) error {
 	return g.fs.Delete(ctx, g.URL, generation)
 }
 
-//NewCounter creates a fs based counter
+// NewCounter creates a fs based counter
 func NewCounter(URL string, fs afs.Service) *Counter {
 	return &Counter{URL: URL, fs: fs}
 }

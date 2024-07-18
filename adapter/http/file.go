@@ -3,8 +3,8 @@ package http
 import (
 	"context"
 	"fmt"
-	"github.com/viant/afs"
-	"github.com/viant/afs/storage"
+	"github.com/knights-analytics/afs"
+	"github.com/knights-analytics/afs/storage"
 	"io"
 	"io/fs"
 	"net/http"

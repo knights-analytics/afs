@@ -1,10 +1,10 @@
 package mem
 
-import "github.com/viant/afs/storage"
+import "github.com/knights-analytics/afs/storage"
 
 var singleton *manager
 
-//Singleton returns singleton manager
+// Singleton returns singleton manager
 func Singleton(options ...storage.Option) storage.Manager {
 	if singleton != nil {
 		return singleton
@@ -13,7 +13,7 @@ func Singleton(options ...storage.Option) storage.Manager {
 	return singleton
 }
 
-//ResetSingleton rest singleton
+// ResetSingleton rest singleton
 func ResetSingleton(options ...storage.Option) {
 	singleton = newManager(options...)
 }

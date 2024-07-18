@@ -3,10 +3,10 @@ package tar
 import (
 	"context"
 	"fmt"
-	"github.com/viant/afs/base"
-	"github.com/viant/afs/option"
-	"github.com/viant/afs/storage"
-	"github.com/viant/afs/url"
+	"github.com/knights-analytics/afs/base"
+	"github.com/knights-analytics/afs/option"
+	"github.com/knights-analytics/afs/storage"
+	"github.com/knights-analytics/afs/url"
 	"io"
 	"io/ioutil"
 	"os"
@@ -74,7 +74,7 @@ func newManager(options ...storage.Option) *manager {
 	return result
 }
 
-//New creates zip manager
+// New creates zip manager
 func New(options ...storage.Option) storage.Manager {
 	return newManager(options...)
 }

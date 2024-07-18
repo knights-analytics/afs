@@ -6,11 +6,11 @@ import (
 	"compress/gzip"
 	"context"
 	"fmt"
-	"github.com/viant/afs/file"
-	"github.com/viant/afs/object"
-	"github.com/viant/afs/option"
-	"github.com/viant/afs/storage"
-	"github.com/viant/afs/url"
+	"github.com/knights-analytics/afs/file"
+	"github.com/knights-analytics/afs/object"
+	"github.com/knights-analytics/afs/option"
+	"github.com/knights-analytics/afs/storage"
+	"github.com/knights-analytics/afs/url"
 	"io"
 	"io/ioutil"
 	"os"
@@ -98,7 +98,7 @@ func (w *walker) Walk(ctx context.Context, URL string, handler storage.OnVisit, 
 	var shallContinue bool
 	var ioReader io.Reader
 	reader := tar.NewReader(readerCloser)
-	//cache is only used if sym link are used
+	// cache is only used if sym link are used
 	var cache = make(map[string][]byte)
 
 	oldRelative := map[string]bool{}

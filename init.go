@@ -1,13 +1,13 @@
 package afs
 
 import (
-	"github.com/viant/afs/file"
-	"github.com/viant/afs/http"
-	"github.com/viant/afs/mem"
-	"github.com/viant/afs/scp"
-	"github.com/viant/afs/ssh"
-	"github.com/viant/afs/tar"
-	"github.com/viant/afs/zip"
+	"github.com/knights-analytics/afs/file"
+	"github.com/knights-analytics/afs/http"
+	"github.com/knights-analytics/afs/mem"
+	"github.com/knights-analytics/afs/scp"
+	"github.com/knights-analytics/afs/ssh"
+	"github.com/knights-analytics/afs/tar"
+	"github.com/knights-analytics/afs/zip"
 )
 
 func init() {

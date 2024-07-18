@@ -1,16 +1,16 @@
 package option
 
 import (
-	"github.com/viant/afs/storage"
+	"github.com/knights-analytics/afs/storage"
 	"reflect"
 )
 
-//Assign assign supplied option, if returns un assign options and true if assign at least one
+// Assign assign supplied option, if returns un assign options and true if assign at least one
 func Assign(options []storage.Option, supported ...interface{}) ([]storage.Option, bool) {
 	return assign(options, supported)
 }
 
-//Assign assign supplied option
+// Assign assign supplied option
 func assign(options []storage.Option, supported []interface{}) ([]storage.Option, bool) {
 	var unfiltered = make([]storage.Option, 0)
 	if len(options) == 0 {

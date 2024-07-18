@@ -3,9 +3,9 @@ package mem_test
 import (
 	"context"
 	"fmt"
+	"github.com/knights-analytics/afs"
+	"github.com/knights-analytics/afs/option"
 	"github.com/stretchr/testify/assert"
-	"github.com/viant/afs"
-	"github.com/viant/afs/option"
 	"net/http"
 	"strings"
 	"sync"

@@ -4,11 +4,11 @@ import (
 	"bytes"
 	"context"
 	"fmt"
+	"github.com/knights-analytics/afs/base"
+	"github.com/knights-analytics/afs/file"
+	"github.com/knights-analytics/afs/option"
+	"github.com/knights-analytics/afs/storage"
 	"github.com/pkg/errors"
-	"github.com/viant/afs/base"
-	"github.com/viant/afs/file"
-	"github.com/viant/afs/option"
-	"github.com/viant/afs/storage"
 	"golang.org/x/crypto/ssh"
 	"io"
 	"io/ioutil"
@@ -33,7 +33,7 @@ func (s *storager) connect() (err error) {
 	return nil
 }
 
-//Delete removes supplied asset
+// Delete removes supplied asset
 func (s *storager) Delete(ctx context.Context, location string, options ...storage.Option) error {
 	session, err := s.NewSession()
 	if err == nil {
@@ -43,7 +43,7 @@ func (s *storager) Delete(ctx context.Context, location string, options ...stora
 
 }
 
-//Exists returns true if location exists
+// Exists returns true if location exists
 func (s *storager) Exists(ctx context.Context, location string, options ...storage.Option) (bool, error) {
 	session, err := newSession(s.Client, modeRead, true, s.timeout)
 	if err != nil {
@@ -58,7 +58,7 @@ func (s *storager) Exists(ctx context.Context, location string, options ...stora
 	return has, nil
 }
 
-//List lists location assets
+// List lists location assets
 func (s *storager) List(ctx context.Context, location string, options ...storage.Option) ([]os.FileInfo, error) {
 	match, page := option.GetListOptions(options)
 	var result = make([]os.FileInfo, 0)
@@ -77,12 +77,12 @@ func (s *storager) List(ctx context.Context, location string, options ...storage
 	return result, err
 }
 
-//Walk visits location resources
+// Walk visits location resources
 func (s *storager) Walk(ctx context.Context, location string, handler func(relative string, info os.FileInfo, reader io.Reader) (bool, error), options ...storage.Option) error {
 	return s.walk(ctx, location, true, handler)
 }
 
-//Walk visits location resources
+// Walk visits location resources
 func (s *storager) walk(ctx context.Context, location string, skipBaseLocation bool, handler func(relative string, info os.FileInfo, reader io.Reader) (bool, error), options ...storage.Option) error {
 	session, err := newSession(s.Client, modeRead, true, s.timeout)
 	if err != nil {
@@ -92,7 +92,7 @@ func (s *storager) walk(ctx context.Context, location string, skipBaseLocation b
 	return session.download(ctx, skipBaseLocation, location, handler)
 }
 
-//Open fetches content for supplied location
+// Open fetches content for supplied location
 func (s *storager) Open(ctx context.Context, location string, options ...storage.Option) (io.ReadCloser, error) {
 	result := new(bytes.Buffer)
 	err := s.Walk(ctx, location, func(relative string, info os.FileInfo, reader io.Reader) (b bool, e error) {
@@ -102,7 +102,7 @@ func (s *storager) Open(ctx context.Context, location string, options ...storage
 	return ioutil.NopCloser(result), err
 }
 
-//Uploader return batch uploader
+// Uploader return batch uploader
 func (s *storager) Uploader(ctx context.Context, destination string) (storage.Upload, io.Closer, error) {
 	session, err := newSession(s.Client, modeWrite, true, 0)
 	if err != nil {
@@ -111,12 +111,12 @@ func (s *storager) Uploader(ctx context.Context, destination string) (storage.Up
 	return session.upload(destination)
 }
 
-//Upload uploads content for supplied destination
+// Upload uploads content for supplied destination
 func (s *storager) Upload(ctx context.Context, destination string, mode os.FileMode, reader io.Reader, options ...storage.Option) error {
 	return s.Create(ctx, destination, mode, reader, false)
 }
 
-//Create creates a file or directory
+// Create creates a file or directory
 func (s *storager) Create(ctx context.Context, destination string, mode os.FileMode, reader io.Reader, isDir bool, options ...storage.Option) error {
 	parent, name := path.Split(destination)
 	if isDir {
@@ -139,7 +139,7 @@ func (s *storager) Create(ctx context.Context, destination string, mode os.FileM
 	return upload(ctx, "", info, bytes.NewReader(content))
 }
 
-//FilterAuthOptions filters auth options
+// FilterAuthOptions filters auth options
 func filterAuthOption(options []storage.Option) (*ssh.ClientConfig, error) {
 	var basicAuth option.BasicAuth
 	var keyAuth KeyAuth
@@ -154,13 +154,13 @@ func filterAuthOption(options []storage.Option) (*ssh.ClientConfig, error) {
 	return authProvider.ClientConfig()
 }
 
-//IsAuthChanged return true if auth has changes
+// IsAuthChanged return true if auth has changes
 func (s *storager) IsAuthChanged(authOptions []storage.Option) bool {
 	changed := s.isAuthChanged(authOptions)
 	return changed
 }
 
-//IsAuthChanged return true if auth has changes
+// IsAuthChanged return true if auth has changes
 func (s *storager) isAuthChanged(authOptions []storage.Option) bool {
 	if len(authOptions) == 0 {
 		return false
@@ -184,7 +184,7 @@ func (s *storager) Get(ctx context.Context, location string, options ...storage.
 	return objects[0], nil
 }
 
-//NewStorager returns a storager
+// NewStorager returns a storager
 func NewStorager(address string, timeout time.Duration, config *ssh.ClientConfig) (storage.Storager, error) {
 	if !strings.Contains(address, ":") {
 		address += fmt.Sprintf(":%d", DefaultPort)

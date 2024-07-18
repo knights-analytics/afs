@@ -4,7 +4,7 @@ import (
 	"crypto/x509"
 	"encoding/pem"
 	"fmt"
-	"github.com/viant/afs/option"
+	"github.com/knights-analytics/afs/option"
 	"golang.org/x/crypto/ssh"
 	"io/ioutil"
 	"os"
@@ -12,7 +12,7 @@ import (
 	"strings"
 )
 
-//AuthProvider represents ssh client config authProvider
+// AuthProvider represents ssh client config authProvider
 type AuthProvider interface {
 	ClientConfig() (*ssh.ClientConfig, error)
 }
@@ -22,7 +22,7 @@ type authProvider struct {
 	credAuth option.BasicAuth
 }
 
-//ClientConfig returns client config
+// ClientConfig returns client config
 func (p *authProvider) ClientConfig() (*ssh.ClientConfig, error) {
 	config := &ssh.ClientConfig{
 		User:            os.Getenv("USER"),
@@ -45,14 +45,14 @@ func (p *authProvider) ClientConfig() (*ssh.ClientConfig, error) {
 	return config, nil
 }
 
-//NewAuthProvider returns new auth provider
+// NewAuthProvider returns new auth provider
 func NewAuthProvider(pemAuth KeyAuth, credAuth option.BasicAuth) AuthProvider {
 	return &authProvider{pemAuth: pemAuth, credAuth: credAuth}
 }
 
-//KeyAuth represents a key based auth
+// KeyAuth represents a key based auth
 type KeyAuth interface {
-	//Singer returns signer key
+	// Singer returns signer key
 	Singer() (ssh.Signer, error)
 
 	Username() string
@@ -64,7 +64,7 @@ type keyAuthnticator struct {
 	_keyPassword string
 }
 
-//Username returns a username
+// Username returns a username
 func (a *keyAuthnticator) Username() string {
 	return a.username
 }
@@ -85,7 +85,7 @@ func (a *keyAuthnticator) Singer() (ssh.Signer, error) {
 	return ssh.ParsePrivateKey(rawPEM)
 }
 
-//PEM returns secure key container
+// PEM returns secure key container
 func (a *keyAuthnticator) pem() ([]byte, error) {
 	pemBytes, err := ioutil.ReadFile(a.keyLocation)
 	if err != nil {
@@ -110,7 +110,7 @@ func (a *keyAuthnticator) pem() ([]byte, error) {
 	return pemBytes, nil
 }
 
-//NewKeyAuth returns a new private key authenticator
+// NewKeyAuth returns a new private key authenticator
 func NewKeyAuth(keyLocation, username, keyPassword string) KeyAuth {
 	return &keyAuthnticator{
 		keyLocation:  keyLocation,
@@ -119,7 +119,7 @@ func NewKeyAuth(keyLocation, username, keyPassword string) KeyAuth {
 	}
 }
 
-//LocalhostKeyAuth returns a localhost key authenticator with ~/.ssh/authorized_keys
+// LocalhostKeyAuth returns a localhost key authenticator with ~/.ssh/authorized_keys
 func LocalhostKeyAuth(keyPassword string, locations ...string) (KeyAuth, error) {
 	username := os.Getenv("USER")
 	if username == "" {

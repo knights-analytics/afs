@@ -1,13 +1,13 @@
 package scp
 
 import (
-	"github.com/viant/afs/file"
+	"github.com/knights-analytics/afs/file"
 	"os"
 	"strings"
 	"time"
 )
 
-//adjustPath tracks current and previous relative path to adjust accordingly
+// adjustPath tracks current and previous relative path to adjust accordingly
 func adjustPath(prev, current string, moveDown func(info os.FileInfo) error, moveUp func() error) error {
 	if prev == current {
 		return nil

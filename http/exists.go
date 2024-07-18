@@ -2,11 +2,11 @@ package http
 
 import (
 	"context"
-	"github.com/viant/afs/storage"
+	"github.com/knights-analytics/afs/storage"
 	"net/http"
 )
 
-//Exists checks if asset exists
+// Exists checks if asset exists
 func (s *manager) Exists(ctx context.Context, URL string, options ...storage.Option) (bool, error) {
 
 	for _, method := range []string{http.MethodHead, http.MethodGet, http.MethodPost, http.MethodPut} {

@@ -2,12 +2,12 @@ package object
 
 import (
 	"fmt"
-	"github.com/viant/afs/storage"
+	"github.com/knights-analytics/afs/storage"
 	"os"
 	"reflect"
 )
 
-//Object represents abstract storage object
+// Object represents abstract storage object
 type Object struct {
 	url      string
 	Source   interface{}
@@ -16,27 +16,27 @@ type Object struct {
 	os.FileInfo
 }
 
-//URL return storage url
+// URL return storage url
 func (o *Object) URL() string {
 	return o.url
 }
 
-//Linkname returns a link name
+// Linkname returns a link name
 func (o *Object) Linkname() string {
 	return o.linkname
 }
 
-//LinkURL returns link URL (absolute path)
+// LinkURL returns link URL (absolute path)
 func (o *Object) LinkURL() string {
 	return o.linkURL
 }
 
-//Wrap wraps Source storage object
+// Wrap wraps Source storage object
 func (o *Object) Wrap(source interface{}) {
 	o.Source = source
 }
 
-//Unwrap unwrap source storage to target pointer
+// Unwrap unwrap source storage to target pointer
 func (o *Object) Unwrap(target interface{}) error {
 	if o.Source == nil {
 		return nil
@@ -51,7 +51,7 @@ func (o *Object) Unwrap(target interface{}) error {
 	return nil
 }
 
-//New creates a new storage object
+// New creates a new storage object
 func New(URL string, info os.FileInfo, source interface{}) storage.Object {
 	linkname := ""
 	linkURL := ""

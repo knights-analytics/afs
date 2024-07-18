@@ -4,7 +4,7 @@ import (
 	"archive/zip"
 	"bytes"
 	"context"
-	"github.com/viant/afs/storage"
+	"github.com/knights-analytics/afs/storage"
 )
 
 type writer struct {

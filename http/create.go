@@ -3,14 +3,14 @@ package http
 import (
 	"context"
 	"fmt"
-	"github.com/viant/afs/option"
-	"github.com/viant/afs/storage"
+	"github.com/knights-analytics/afs/option"
+	"github.com/knights-analytics/afs/storage"
 	"io"
 	"net/http"
 	"os"
 )
 
-//Create send post request
+// Create send post request
 func (s *manager) Create(ctx context.Context, URL string, mode os.FileMode, isDir bool, options ...storage.Option) error {
 	var reader io.Reader
 	option.Assign(options, &reader)

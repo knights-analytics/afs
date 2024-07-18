@@ -1,7 +1,7 @@
 package file
 
 import (
-	"github.com/viant/afs/url"
+	"github.com/knights-analytics/afs/url"
 	"os"
 	"path"
 	"regexp"
@@ -11,7 +11,7 @@ import (
 
 var rootElement = []string{"/"}
 
-//Path returns shortest path for specified location, if relative it adds current directory
+// Path returns shortest path for specified location, if relative it adds current directory
 func Path(location string) string {
 	location = url.Path(location)
 	isAbsolute := strings.HasPrefix(location, "/")

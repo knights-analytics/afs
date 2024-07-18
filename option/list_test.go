@@ -2,14 +2,14 @@ package option_test
 
 import (
 	"fmt"
+	"github.com/knights-analytics/afs/matcher"
+	"github.com/knights-analytics/afs/option"
+	"github.com/knights-analytics/afs/storage"
 	"github.com/stretchr/testify/assert"
-	"github.com/viant/afs/matcher"
-	"github.com/viant/afs/option"
-	"github.com/viant/afs/storage"
 	"testing"
 )
 
-//GetListOptions returns list options
+// GetListOptions returns list options
 func Test_GetListOptions(t *testing.T) {
 
 	basic, _ := matcher.NewBasic("", "", "", nil)

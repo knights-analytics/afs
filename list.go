@@ -2,11 +2,11 @@ package afs
 
 import (
 	"context"
-	"github.com/viant/afs/file"
-	"github.com/viant/afs/matcher"
-	"github.com/viant/afs/option"
-	"github.com/viant/afs/storage"
-	"github.com/viant/afs/url"
+	"github.com/knights-analytics/afs/file"
+	"github.com/knights-analytics/afs/matcher"
+	"github.com/knights-analytics/afs/option"
+	"github.com/knights-analytics/afs/storage"
+	"github.com/knights-analytics/afs/url"
 	"sync"
 )
 

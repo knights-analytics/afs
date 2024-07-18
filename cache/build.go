@@ -4,10 +4,10 @@ import (
 	"bytes"
 	"context"
 	"encoding/json"
-	"github.com/viant/afs"
-	"github.com/viant/afs/file"
-	"github.com/viant/afs/option"
-	"github.com/viant/afs/storage"
+	"github.com/knights-analytics/afs"
+	"github.com/knights-analytics/afs/file"
+	"github.com/knights-analytics/afs/option"
+	"github.com/knights-analytics/afs/storage"
 	"io/ioutil"
 	"strings"
 	"sync"
@@ -22,7 +22,7 @@ func uploadCacheFile(ctx context.Context, cache *Cache, cacheURL string, service
 		data, _ = compressWithGzip(data)
 	}
 	err = service.Upload(ctx, cacheURL, file.DefaultFileOsMode, bytes.NewReader(data))
-	if isRateError(err) || isPreConditionError(err) { //ignore rate or generation errors
+	if isRateError(err) || isPreConditionError(err) { // ignore rate or generation errors
 		err = nil
 	}
 	return err

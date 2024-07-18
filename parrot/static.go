@@ -3,10 +3,10 @@ package parrot
 import (
 	"context"
 	"fmt"
-	"github.com/viant/afs"
-	"github.com/viant/afs/file"
-	"github.com/viant/afs/storage"
-	"github.com/viant/afs/url"
+	"github.com/knights-analytics/afs"
+	"github.com/knights-analytics/afs/file"
+	"github.com/knights-analytics/afs/storage"
+	"github.com/knights-analytics/afs/url"
 	"io"
 	"io/ioutil"
 	"os"
@@ -14,7 +14,7 @@ import (
 	"strings"
 )
 
-//Generate generate code that maps source file into destination go files
+// Generate generate code that maps source file into destination go files
 func Generate(ctx context.Context, src, dest string, useASCII bool, opts ...storage.Option) (err error) {
 	fs := afs.New()
 	return fs.Walk(ctx, src, func(ctx context.Context, baseURL string, parent string, info os.FileInfo, reader io.Reader) (toContinue bool, err error) {

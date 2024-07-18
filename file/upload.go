@@ -2,10 +2,10 @@ package file
 
 import (
 	"context"
+	"github.com/knights-analytics/afs/object"
+	"github.com/knights-analytics/afs/option"
+	"github.com/knights-analytics/afs/storage"
 	"github.com/pkg/errors"
-	"github.com/viant/afs/object"
-	"github.com/viant/afs/option"
-	"github.com/viant/afs/storage"
 	"io"
 	"os"
 	"path/filepath"
@@ -13,7 +13,7 @@ import (
 	"strings"
 )
 
-//EnsureParentPathExists create parent path if needed
+// EnsureParentPathExists create parent path if needed
 func EnsureParentPathExists(filename string, fileMode os.FileMode) error {
 	filename = normalize(filename)
 	stat, err := os.Stat(filename)
@@ -30,7 +30,7 @@ func EnsureParentPathExists(filename string, fileMode os.FileMode) error {
 	return os.MkdirAll(parent, fileMode)
 }
 
-//Upload writes reader content to supplied URL path.
+// Upload writes reader content to supplied URL path.
 func Upload(ctx context.Context, URL string, mode os.FileMode, reader io.Reader, options ...storage.Option) error {
 	filePath := Path(URL)
 	err := EnsureParentPathExists(filePath, DefaultDirOsMode)

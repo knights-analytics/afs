@@ -2,8 +2,8 @@ package http
 
 import (
 	"fmt"
+	"github.com/knights-analytics/afs/storage"
 	"github.com/stretchr/testify/assert"
-	"github.com/viant/afs/storage"
 	"net"
 	"net/http"
 	"testing"

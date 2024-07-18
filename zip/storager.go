@@ -5,15 +5,15 @@ import (
 	"bytes"
 	"context"
 	"fmt"
+	"github.com/knights-analytics/afs/archive"
+	"github.com/knights-analytics/afs/asset"
+	"github.com/knights-analytics/afs/base"
+	"github.com/knights-analytics/afs/file"
+	"github.com/knights-analytics/afs/matcher"
+	"github.com/knights-analytics/afs/option"
+	"github.com/knights-analytics/afs/storage"
+	"github.com/knights-analytics/afs/url"
 	"github.com/pkg/errors"
-	"github.com/viant/afs/archive"
-	"github.com/viant/afs/asset"
-	"github.com/viant/afs/base"
-	"github.com/viant/afs/file"
-	"github.com/viant/afs/matcher"
-	"github.com/viant/afs/option"
-	"github.com/viant/afs/storage"
-	"github.com/viant/afs/url"
 	"io"
 	"io/ioutil"
 	"os"
@@ -23,7 +23,7 @@ import (
 
 type storager struct {
 	base.Storager
-	//underlying archive URL
+	// underlying archive URL
 	walker     *walker
 	mode       os.FileMode
 	URL        string
@@ -33,13 +33,13 @@ type storager struct {
 	downloader storage.Opener
 }
 
-//Exists returns true if resource exists in archive
+// Exists returns true if resource exists in archive
 func (s *storager) Exists(ctx context.Context, location string, options ...storage.Option) (bool, error) {
 	objects, _ := s.List(ctx, location)
 	return len(objects) > 0, nil
 }
 
-//List lists archive assets
+// List lists archive assets
 func (s *storager) List(ctx context.Context, location string, options ...storage.Option) ([]os.FileInfo, error) {
 	if !s.exists {
 		return nil, fmt.Errorf("%v: not found", s.URL)
@@ -68,7 +68,7 @@ func (s *storager) List(ctx context.Context, location string, options ...storage
 	return result, err
 }
 
-//Walk visits location resources
+// Walk visits location resources
 func (s *storager) Walk(ctx context.Context, location string, handler func(parent string, info os.FileInfo, reader io.Reader) (bool, error), options ...storage.Option) error {
 	if !s.exists {
 		return fmt.Errorf("%v: not found", s.URL)
@@ -94,7 +94,7 @@ func (s *storager) Walk(ctx context.Context, location string, handler func(paren
 	})
 }
 
-//Open fetches content for supplied location
+// Open fetches content for supplied location
 func (s *storager) Open(ctx context.Context, location string, options ...storage.Option) (io.ReadCloser, error) {
 	if !s.exists {
 		return nil, fmt.Errorf("%v: not found", s.URL)
@@ -119,7 +119,7 @@ func (s *storager) Open(ctx context.Context, location string, options ...storage
 	return result, err
 }
 
-//Delete removes specified resource from archive
+// Delete removes specified resource from archive
 func (s *storager) Delete(ctx context.Context, location string, options ...storage.Option) error {
 	if !s.exists {
 		return fmt.Errorf("%v: not found", s.URL)
@@ -153,7 +153,7 @@ func (s *storager) touch(ctx context.Context) error {
 	return err
 }
 
-//Uploader return batch uploader, if archive does not exists, it creates one
+// Uploader return batch uploader, if archive does not exists, it creates one
 func (s *storager) Uploader(ctx context.Context, destination string) (storage.Upload, io.Closer, error) {
 	if !s.exists {
 		if err := s.touch(ctx); err != nil {
@@ -181,12 +181,12 @@ func (s *storager) Uploader(ctx context.Context, destination string) (storage.Up
 	return uploader.Upload, uploader, nil
 }
 
-//Upload uploads content for supplied destination, if archive does not exists, it creates one
+// Upload uploads content for supplied destination, if archive does not exists, it creates one
 func (s *storager) Upload(ctx context.Context, destination string, mode os.FileMode, reader io.Reader, options ...storage.Option) error {
 	return s.Create(ctx, destination, mode, reader, false)
 }
 
-//Create creates a file or directory in archive, if archive does not exists, it creates one
+// Create creates a file or directory in archive, if archive does not exists, it creates one
 func (s *storager) Create(ctx context.Context, destination string, mode os.FileMode, reader io.Reader, isDir bool, options ...storage.Option) error {
 	if !s.exists {
 		if err := s.touch(ctx); err != nil {
@@ -216,12 +216,12 @@ func (s *storager) Create(ctx context.Context, destination string, mode os.FileM
 	return s.uploader.Upload(ctx, s.URL, s.mode, uploader.buffer)
 }
 
-//Close closes undelrying closer
+// Close closes undelrying closer
 func (s *storager) Close() error {
 	return s.closer.Close()
 }
 
-//newStorager create a storage service
+// newStorager create a storage service
 func newStorager(ctx context.Context, baseURL string, mgr storage.Manager) (*storager, error) {
 	URL := url.SchemeExtensionURL(baseURL)
 	if URL == "" {
@@ -250,7 +250,7 @@ func newStorager(ctx context.Context, baseURL string, mgr storage.Manager) (*sto
 	return result, nil
 }
 
-//NewStorager create a storage service
+// NewStorager create a storage service
 func NewStorager(ctx context.Context, baseURL string, mgr storage.Manager) (storage.Storager, error) {
 	return newStorager(ctx, baseURL, mgr)
 }

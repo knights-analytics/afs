@@ -2,21 +2,21 @@ package afs
 
 import (
 	"fmt"
-	"github.com/viant/afs/file"
-	"github.com/viant/afs/storage"
-	"github.com/viant/afs/url"
+	"github.com/knights-analytics/afs/file"
+	"github.com/knights-analytics/afs/storage"
+	"github.com/knights-analytics/afs/url"
 	"sync"
 )
 
-//Provider represents manager provider
+// Provider represents manager provider
 type Provider func(options ...storage.Option) (storage.Manager, error)
 
-//Registry represents  abstract file system service provider registry
+// Registry represents  abstract file system service provider registry
 type Registry interface {
-	//Register register schemeURL with storage service
+	// Register register schemeURL with storage service
 	Register(uRLScheme string, provider Provider)
 
-	//Get returns service provider for supplied schemeURL
+	// Get returns service provider for supplied schemeURL
 	Get(uRLScheme string) (Provider, error)
 }
 
@@ -44,7 +44,7 @@ func (r *registry) Get(uRLScheme string) (Provider, error) {
 
 var singleton Registry
 
-//GetRegistry return singleton registry
+// GetRegistry return singleton registry
 func GetRegistry() Registry {
 	if singleton != nil {
 		return singleton
@@ -56,7 +56,7 @@ func GetRegistry() Registry {
 	return singleton
 }
 
-//Manager returns a manager for supplied sourceURL
+// Manager returns a manager for supplied sourceURL
 func Manager(URL string, options ...storage.Option) (storage.Manager, error) {
 	scheme := url.Scheme(URL, file.Scheme)
 	provider, err := GetRegistry().Get(scheme)

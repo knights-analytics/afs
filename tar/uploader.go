@@ -4,9 +4,9 @@ import (
 	"archive/tar"
 	"bytes"
 	"context"
-	"github.com/viant/afs/file"
-	"github.com/viant/afs/option"
-	"github.com/viant/afs/storage"
+	"github.com/knights-analytics/afs/file"
+	"github.com/knights-analytics/afs/option"
+	"github.com/knights-analytics/afs/storage"
 	"io"
 	"os"
 	"path"
@@ -55,12 +55,12 @@ func (u *uploader) Uploader(ctx context.Context, URL string, options ...storage.
 	}, writer, nil
 }
 
-//newBatchUploader returns a batch uploader
+// newBatchUploader returns a batch uploader
 func newBatchUploader(dest storage.Uploader) *uploader {
 	return &uploader{uploader: dest}
 }
 
-//NewBatchUploader returns a batch uploader
+// NewBatchUploader returns a batch uploader
 func NewBatchUploader(dest storage.Uploader) storage.BatchUploader {
 	return newBatchUploader(dest)
 }

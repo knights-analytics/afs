@@ -2,8 +2,8 @@ package sync
 
 import (
 	"context"
+	"github.com/knights-analytics/afs"
 	"github.com/stretchr/testify/assert"
-	"github.com/viant/afs"
 	"testing"
 )
 

@@ -1,10 +1,10 @@
 package scp
 
 import (
-	"github.com/viant/afs/storage"
+	"github.com/knights-analytics/afs/storage"
 )
 
-//Provider returns a http manager
+// Provider returns a http manager
 func Provider(options ...storage.Option) (storage.Manager, error) {
 	return New(options...), nil
 }

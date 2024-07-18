@@ -2,11 +2,11 @@ package afs
 
 import (
 	"context"
+	"github.com/knights-analytics/afs/file"
+	"github.com/knights-analytics/afs/option"
+	"github.com/knights-analytics/afs/storage"
+	"github.com/knights-analytics/afs/url"
 	"github.com/pkg/errors"
-	"github.com/viant/afs/file"
-	"github.com/viant/afs/option"
-	"github.com/viant/afs/storage"
-	"github.com/viant/afs/url"
 	"io"
 	"io/ioutil"
 	"os"
@@ -14,7 +14,7 @@ import (
 	"strings"
 )
 
-//updateDestURL updated dest file
+// updateDestURL updated dest file
 func (s *service) updateDestURL(sourceURL, destURL string) string {
 	sourcePath := url.Path(sourceURL)
 	_, sourceName := path.Split(sourcePath)
@@ -24,7 +24,7 @@ func (s *service) updateDestURL(sourceURL, destURL string) string {
 		return destURL
 	}
 	sourceExt := path.Ext(sourceName)
-	if len(sourceExt) > 5 { //not real extension
+	if len(sourceExt) > 5 { // not real extension
 		sourceExt = ""
 	}
 	if sourceExt != "" && !strings.Contains(destName, sourceExt) {

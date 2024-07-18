@@ -1,8 +1,8 @@
 package modifier
 
 import (
+	"github.com/knights-analytics/afs/file"
 	"github.com/stretchr/testify/assert"
-	"github.com/viant/afs/file"
 	"io/ioutil"
 	"strings"
 	"testing"

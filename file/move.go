@@ -2,12 +2,12 @@ package file
 
 import (
 	"context"
+	"github.com/knights-analytics/afs/storage"
 	"github.com/pkg/errors"
-	"github.com/viant/afs/storage"
 	"os"
 )
 
-//Move moves source to URL
+// Move moves source to URL
 func Move(ctx context.Context, sourceURL, destURL string, options ...storage.Option) error {
 	sourcePath := Path(sourceURL)
 	destPath := Path(destURL)

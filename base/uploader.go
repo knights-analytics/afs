@@ -2,9 +2,9 @@ package base
 
 import (
 	"context"
-	"github.com/viant/afs/file"
-	"github.com/viant/afs/storage"
-	"github.com/viant/afs/url"
+	"github.com/knights-analytics/afs/file"
+	"github.com/knights-analytics/afs/storage"
+	"github.com/knights-analytics/afs/url"
 	"io"
 	"os"
 	"path"
@@ -16,7 +16,7 @@ type uploader struct {
 	storage.Manager
 }
 
-//Close implements closer
+// Close implements closer
 func (u *uploader) Close() error {
 	return nil
 }
@@ -45,7 +45,7 @@ func (u *uploader) Uploader(ctx context.Context, URL string, options ...storage.
 	return handler, u, nil
 }
 
-//NewUploader creates a new batch uploader
+// NewUploader creates a new batch uploader
 func NewUploader(manager storage.Manager) storage.BatchUploader {
 	return &uploader{manager}
 }

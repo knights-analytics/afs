@@ -1,11 +1,11 @@
 package parrot
 
 import (
-	"github.com/viant/afs/file"
-	"github.com/viant/afs/url"
+	"github.com/knights-analytics/afs/file"
+	"github.com/knights-analytics/afs/url"
 )
 
-//Pkg returns package name for location
+// Pkg returns package name for location
 func Pkg(location string) string {
 	parent, _ := url.Split(location, file.Scheme)
 	_, pkg := url.Split(parent, file.Scheme)

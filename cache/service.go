@@ -5,14 +5,14 @@ import (
 	"context"
 	"encoding/json"
 	"fmt"
-	"github.com/viant/afs"
-	"github.com/viant/afs/file"
-	"github.com/viant/afs/matcher"
-	"github.com/viant/afs/mem"
-	"github.com/viant/afs/object"
-	"github.com/viant/afs/option"
-	"github.com/viant/afs/storage"
-	"github.com/viant/afs/url"
+	"github.com/knights-analytics/afs"
+	"github.com/knights-analytics/afs/file"
+	"github.com/knights-analytics/afs/matcher"
+	"github.com/knights-analytics/afs/mem"
+	"github.com/knights-analytics/afs/object"
+	"github.com/knights-analytics/afs/option"
+	"github.com/knights-analytics/afs/storage"
+	"github.com/knights-analytics/afs/url"
 	"io"
 	"log"
 	"net/http"
@@ -83,7 +83,7 @@ func (s *service) isExcluded(candidateURL string, info os.FileInfo) bool {
 		candidateURL = candidateURL[index+len(s.baseURL):]
 	}
 	parent, name := path.Split(candidateURL)
-	if info == nil { //default info
+	if info == nil { // default info
 		info = file.NewInfo(name, 1, file.DefaultFileOsMode, s.at, false)
 	}
 	if !s.exclusion.Match(parent, info) {
@@ -242,7 +242,7 @@ func (s *service) build(ctx context.Context) (*Cache, error) {
 }
 
 func (s *service) shallRebuildCache(cacheObject storage.Object) bool {
-	return cacheObject == nil //if there is not cache reload
+	return cacheObject == nil // if there is not cache reload
 }
 
 func (s *service) uploadCache(ctx context.Context, cache *Cache, prev storage.Object) error {
@@ -273,7 +273,7 @@ func isPreConditionError(err error) bool {
 	return strings.Contains(err.Error(), fmt.Sprintf("%v", http.StatusPreconditionFailed))
 }
 
-//New create a cache service for supplied base URL
+// New create a cache service for supplied base URL
 func New(baseURL string, fs afs.Service, opts ...storage.Option) afs.Service {
 	logger := &option.Logger{}
 	var cacheOption = &option.Cache{}

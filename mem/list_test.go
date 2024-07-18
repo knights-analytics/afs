@@ -2,9 +2,9 @@ package mem
 
 import (
 	"context"
+	"github.com/knights-analytics/afs/file"
+	"github.com/knights-analytics/afs/url"
 	"github.com/stretchr/testify/assert"
-	"github.com/viant/afs/file"
-	"github.com/viant/afs/url"
 	"strings"
 	"testing"
 )

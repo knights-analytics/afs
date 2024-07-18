@@ -2,15 +2,15 @@ package afs
 
 import (
 	"context"
-	"github.com/viant/afs/option"
-	"github.com/viant/afs/storage"
+	"github.com/knights-analytics/afs/option"
+	"github.com/knights-analytics/afs/storage"
 	"io"
 	"os"
 	"sync"
 	"sync/atomic"
 )
 
-//NewWriter creates an upload writer
+// NewWriter creates an upload writer
 func (s *service) NewWriter(ctx context.Context, URL string, mode os.FileMode, options ...storage.Option) (io.WriteCloser, error) {
 	empty := &option.Empty{}
 	option.Assign(options, &empty)
@@ -90,7 +90,7 @@ func (w *writer) Write(p []byte) (n int, err error) {
 
 // Close completes the write operation and flushes any buffered data.
 func (w *writer) Close() error {
-	//nothing was written quit
+	// nothing was written quit
 	if atomic.LoadInt64(&w.written) == 0 && !w.allowEmpty {
 		defer close(w.doneChannel)
 		return nil

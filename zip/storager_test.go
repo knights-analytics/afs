@@ -3,10 +3,10 @@ package zip
 import (
 	"bytes"
 	"context"
+	"github.com/knights-analytics/afs/asset"
+	"github.com/knights-analytics/afs/mem"
+	"github.com/knights-analytics/afs/storage"
 	"github.com/stretchr/testify/assert"
-	"github.com/viant/afs/asset"
-	"github.com/viant/afs/mem"
-	"github.com/viant/afs/storage"
 	"io"
 	"io/ioutil"
 	"os"

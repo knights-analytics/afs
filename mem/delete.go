@@ -2,11 +2,11 @@ package mem
 
 import (
 	"context"
-	"github.com/viant/afs/storage"
+	"github.com/knights-analytics/afs/storage"
 	"path"
 )
 
-//Delete removes file or directory
+// Delete removes file or directory
 func (s *storager) Delete(ctx context.Context, location string, options ...storage.Option) error {
 	parent, err := s.parent(location, 0)
 	if err != nil {

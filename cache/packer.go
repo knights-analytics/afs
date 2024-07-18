@@ -2,15 +2,15 @@ package cache
 
 import (
 	"context"
-	"github.com/viant/afs"
-	"github.com/viant/afs/file"
-	"github.com/viant/afs/option"
-	"github.com/viant/afs/storage"
-	"github.com/viant/afs/url"
+	"github.com/knights-analytics/afs"
+	"github.com/knights-analytics/afs/file"
+	"github.com/knights-analytics/afs/option"
+	"github.com/knights-analytics/afs/storage"
+	"github.com/knights-analytics/afs/url"
 	"strings"
 )
 
-//Package creates cache file for source URL with rewrite
+// Package creates cache file for source URL with rewrite
 func Package(ctx context.Context, sourceURL string, rewriteBaseURL string, options ...storage.Option) error {
 	var cacheOption = &option.Cache{}
 	option.Assign(options, &cacheOption)

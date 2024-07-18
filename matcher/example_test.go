@@ -2,8 +2,8 @@ package matcher_test
 
 import (
 	"fmt"
-	"github.com/viant/afs/file"
-	"github.com/viant/afs/matcher"
+	"github.com/knights-analytics/afs/file"
+	"github.com/knights-analytics/afs/matcher"
 	"log"
 	"time"
 )

@@ -1,13 +1,13 @@
 package http
 
 import (
-	"github.com/viant/afs/option"
-	"github.com/viant/afs/storage"
-	"github.com/viant/afs/url"
+	"github.com/knights-analytics/afs/option"
+	"github.com/knights-analytics/afs/storage"
+	"github.com/knights-analytics/afs/url"
 	"net/http"
 )
 
-//ClientProvider represents clinet provider option
+// ClientProvider represents clinet provider option
 type ClientProvider func(baseURL string, options ...storage.Option) (*http.Client, error)
 
 func (s *manager) getClient(baseURL string, options ...storage.Option) (*http.Client, error) {

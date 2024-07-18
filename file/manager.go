@@ -2,7 +2,7 @@ package file
 
 import (
 	"context"
-	"github.com/viant/afs/storage"
+	"github.com/knights-analytics/afs/storage"
 	"io"
 	"os"
 )
@@ -49,7 +49,7 @@ func (s *manager) Scheme() string {
 	return Scheme
 }
 
-//New returns a file manager
+// New returns a file manager
 func New() storage.Manager {
 	return &manager{}
 }

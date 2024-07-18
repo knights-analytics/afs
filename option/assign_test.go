@@ -3,8 +3,8 @@ package option
 import (
 	"bytes"
 	"fmt"
+	"github.com/knights-analytics/afs/storage"
 	"github.com/stretchr/testify/assert"
-	"github.com/viant/afs/storage"
 	"io"
 	"reflect"
 	"testing"

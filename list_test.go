@@ -3,10 +3,10 @@ package afs
 import (
 	"context"
 	"fmt"
+	"github.com/knights-analytics/afs/asset"
+	"github.com/knights-analytics/afs/file"
+	"github.com/knights-analytics/afs/option"
 	"github.com/stretchr/testify/assert"
-	"github.com/viant/afs/asset"
-	"github.com/viant/afs/file"
-	"github.com/viant/afs/option"
 	"os"
 	"path"
 	"testing"

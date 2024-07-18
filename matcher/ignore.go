@@ -1,8 +1,8 @@
 package matcher
 
 import (
-	"github.com/viant/afs/option"
-	"github.com/viant/afs/storage"
+	"github.com/knights-analytics/afs/option"
+	"github.com/knights-analytics/afs/storage"
 	"io/ioutil"
 	"os"
 	"path"
@@ -10,23 +10,21 @@ import (
 )
 
 /*
-
 Ignore matcher represents matcher that matches file that are not in the ignore rules.
 The syntax of ignore borrows heavily from that of .gitignore; see https://git-scm.com/docs/gitignore or man gitignore for a full reference.
 
 Each line is one of the following:
 
-    pattern: a pattern specifies file names to ignore (or explicitly include) in the upload. If multiple patterns match the file name, the last matching pattern takes precedence.
-    comment: comments begin with # and are ignored (see "ADVANCED TOPICS" for an exception). If you want to include a # at the beginning of a pattern, you must escape it: \#.
-    blank line: A blank line is ignored and useful for readability.
-
+	pattern: a pattern specifies file names to ignore (or explicitly include) in the upload. If multiple patterns match the file name, the last matching pattern takes precedence.
+	comment: comments begin with # and are ignored (see "ADVANCED TOPICS" for an exception). If you want to include a # at the beginning of a pattern, you must escape it: \#.
+	blank line: A blank line is ignored and useful for readability.
 */
 type Ignore struct {
 	Rules []string
 	Ext   map[string]bool
 }
 
-//Load loads matcher rules from location
+// Load loads matcher rules from location
 func (i *Ignore) Load(location string) error {
 	content, err := ioutil.ReadFile(location)
 	if err != nil {
@@ -46,7 +44,7 @@ func (i *Ignore) Load(location string) error {
 	return nil
 }
 
-//Match matches returns true for any resource that does not match ignore rules
+// Match matches returns true for any resource that does not match ignore rules
 func (i *Ignore) Match(parent string, info os.FileInfo) bool {
 	return !i.shouldSkip(parent, info)
 
@@ -162,7 +160,7 @@ func (i *Ignore) shouldSkip(parent string, info os.FileInfo) bool {
 	return false
 }
 
-//NewIgnore creates a new exclusion rule
+// NewIgnore creates a new exclusion rule
 func NewIgnore(options ...storage.Option) (*Ignore, error) {
 	location := &option.Location{}
 	ignore := &Ignore{
@@ -176,7 +174,7 @@ func NewIgnore(options ...storage.Option) (*Ignore, error) {
 	return ignore, nil
 }
 
-//WithExtExclusion returns an ignore with ext exclusion
+// WithExtExclusion returns an ignore with ext exclusion
 func WithExtExclusion(ext ...string) *Ignore {
 	ret := &Ignore{Ext: map[string]bool{}}
 	for _, e := range ext {

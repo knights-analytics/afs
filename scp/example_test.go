@@ -3,18 +3,18 @@ package scp_test
 import (
 	"context"
 	"fmt"
-	"github.com/viant/afs"
-	"github.com/viant/afs/option"
-	"github.com/viant/afs/scp"
+	"github.com/knights-analytics/afs"
+	"github.com/knights-analytics/afs/option"
+	"github.com/knights-analytics/afs/scp"
 	"io/ioutil"
 	"log"
 	"strings"
 )
 
-//Example_Storager storager usage example (uses files rather then URLs)
+// Example_Storager storager usage example (uses files rather then URLs)
 func Example_Storager() {
 
-	//make sure that ~/.ssh/authorized_keys is configured
+	// make sure that ~/.ssh/authorized_keys is configured
 	auth, err := scp.LocalhostKeyAuth("")
 	if err != nil {
 		log.Fatal(err)
@@ -62,7 +62,7 @@ func Example_Storager() {
 
 }
 
-//Example_Service storager usage example
+// Example_Service storager usage example
 func Example_Service() {
 	auth, err := scp.LocalhostKeyAuth("")
 	if err != nil {
@@ -82,7 +82,7 @@ func Example_Service() {
 	fmt.Printf("data: %s\n", data)
 }
 
-//Example_BasicAuth storager with basic auth example
+// Example_BasicAuth storager with basic auth example
 func Example_LocalhostKeyAuth() {
 	auth := option.NewBasicAuth("myuser", "nypass")
 	service := afs.New()
@@ -99,7 +99,7 @@ func Example_LocalhostKeyAuth() {
 	fmt.Printf("data: %s\n", data)
 }
 
-//Example_BasicAuth storager with basic auth example
+// Example_BasicAuth storager with basic auth example
 func Example_BasicAuth() {
 	auth, err := scp.LocalhostKeyAuth("pathToMyAuthorizedKeyContainer_id_rsa")
 	if err != nil {

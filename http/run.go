@@ -2,8 +2,8 @@ package http
 
 import (
 	"context"
-	"github.com/viant/afs/option"
-	"github.com/viant/afs/storage"
+	"github.com/knights-analytics/afs/option"
+	"github.com/knights-analytics/afs/storage"
 	"net/http"
 )
 
@@ -12,8 +12,8 @@ func (s *manager) run(ctx context.Context, URL string, request *http.Request, op
 	var basicAuthProvider option.BasicAuth
 	resp := &http.Response{}
 	header := http.Header{}
-	cookies :=[]*http.Cookie{}
-	option.Assign(options, &clientProvider, &basicAuthProvider, &header,  &resp, &cookies)
+	cookies := []*http.Cookie{}
+	option.Assign(options, &clientProvider, &basicAuthProvider, &header, &resp, &cookies)
 	s.setHeader(request, header)
 	s.setCookies(cookies, request)
 	s.authWithBasicCred(request, basicAuthProvider)

@@ -2,11 +2,11 @@ package archive
 
 import (
 	"context"
+	"github.com/knights-analytics/afs/asset"
+	"github.com/knights-analytics/afs/base"
+	"github.com/knights-analytics/afs/mem"
+	"github.com/knights-analytics/afs/walker"
 	"github.com/stretchr/testify/assert"
-	"github.com/viant/afs/asset"
-	"github.com/viant/afs/base"
-	"github.com/viant/afs/mem"
-	"github.com/viant/afs/walker"
 	"testing"
 )
 

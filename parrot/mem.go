@@ -3,10 +3,10 @@ package parrot
 import (
 	"context"
 	"fmt"
-	"github.com/viant/afs"
-	"github.com/viant/afs/file"
-	"github.com/viant/afs/storage"
-	"github.com/viant/afs/url"
+	"github.com/knights-analytics/afs"
+	"github.com/knights-analytics/afs/file"
+	"github.com/knights-analytics/afs/storage"
+	"github.com/knights-analytics/afs/url"
 	"io"
 	"io/ioutil"
 	"os"
@@ -14,7 +14,7 @@ import (
 	"strings"
 )
 
-//GenerateWithMem generate code that pre loads src location assets into memory storage
+// GenerateWithMem generate code that pre loads src location assets into memory storage
 func GenerateWithMem(ctx context.Context, src, dest string, useASCII bool, opts ...storage.Option) (err error) {
 	fs := afs.New()
 	var uploads = make([]string, 0)
@@ -45,8 +45,8 @@ func GenerateWithMem(ctx context.Context, src, dest string, useASCII bool, opts 
 import (
 	"bytes"
 	"log"
-	"github.com/viant/afs"
-	"github.com/viant/afs/file"
+	"github.com/knights-analytics/afs"
+	"github.com/knights-analytics/afs/file"
 	"context"
 )
 

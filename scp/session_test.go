@@ -4,9 +4,9 @@ import (
 	"bytes"
 	"context"
 	"fmt"
+	"github.com/knights-analytics/afs/asset"
+	"github.com/knights-analytics/afs/file"
 	"github.com/stretchr/testify/assert"
-	"github.com/viant/afs/asset"
-	"github.com/viant/afs/file"
 	"io"
 	"io/ioutil"
 	_ "net/http/pprof"
@@ -207,7 +207,7 @@ func TestSession_upload(t *testing.T) {
 				asset.NewFile(".bin/foo.txt", []byte("abc"), 0644),
 			},
 		},
-		//{
+		// {
 		//	description:    "single file location upload",
 		//	recursive:      true,
 		//	createLocation: true,
@@ -216,8 +216,8 @@ func TestSession_upload(t *testing.T) {
 		//	assets: []*asset.Resource{
 		//		asset.NewFile("foo.txt", []byte("abc"), 0644),
 		//	},
-		//},
-		//{
+		// },
+		// {
 		//	description:    "multi file location upload",
 		//	recursive:      true,
 		//	createLocation: true,
@@ -227,9 +227,9 @@ func TestSession_upload(t *testing.T) {
 		//		asset.NewFile("foo1.txt", []byte("abc"), 0644),
 		//		asset.NewFile("foo2.txt", []byte("xyz"), 0644),
 		//	},
-		//},
+		// },
 		//
-		//{
+		// {
 		//	description:    "multi download from baseLocation",
 		//	baseLocation:   path.Join(baseDir, "scp_upload_03"),
 		//	location:       path.Join(baseDir, "scp_upload_03"),
@@ -243,8 +243,8 @@ func TestSession_upload(t *testing.T) {
 		//		asset.NewFile("sub/bar2.txt", []byte("xyz"), 0644),
 		//		asset.NewFile("bar.txt", []byte("xyz"), 0644),
 		//	},
-		//},
-		//{
+		// },
+		// {
 		//	description:    "multi download - unordered",
 		//	baseLocation:   path.Join(baseDir, "scp_upload_05"),
 		//	location:       path.Join(baseDir, "scp_upload_05"),
@@ -260,8 +260,8 @@ func TestSession_upload(t *testing.T) {
 		//		asset.NewFile("test/folder1/res.txt", []byte("xyz"), 0644),
 		//		asset.NewFile("test/folder2/res1.txt", []byte("xyz"), 0644),
 		//	},
-		//},
-		//{
+		// },
+		// {
 		//	description:    "multi download from baseLocation - 2 depth",
 		//	baseLocation:   path.Join(baseDir, "scp_upload_04"),
 		//	location:       path.Join(baseDir, "scp_upload_04"),
@@ -276,7 +276,7 @@ func TestSession_upload(t *testing.T) {
 		//		asset.NewFile("s1/bar2.txt", []byte("xyz"), 0644),
 		//		asset.NewFile("foo2.txt", []byte("abc"), 0644),
 		//	},
-		//},
+		// },
 	}
 
 	for _, useCase := range useCases {

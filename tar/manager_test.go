@@ -3,8 +3,8 @@ package tar_test
 import (
 	"context"
 	"fmt"
+	"github.com/knights-analytics/afs"
 	"github.com/stretchr/testify/assert"
-	"github.com/viant/afs"
 	"path"
 	"runtime"
 	"testing"

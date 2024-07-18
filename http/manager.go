@@ -1,7 +1,7 @@
 package http
 
 import (
-	"github.com/viant/afs/storage"
+	"github.com/knights-analytics/afs/storage"
 	"net/http"
 	"sync"
 )
@@ -13,7 +13,7 @@ type manager struct {
 	options        []storage.Option
 }
 
-//CloseIdleConnections closes iddle connections
+// CloseIdleConnections closes iddle connections
 func CloseIdleConnections(client interface{}) {
 	type closeIdler interface {
 		CloseIdleConnections()
@@ -23,7 +23,7 @@ func CloseIdleConnections(client interface{}) {
 	}
 }
 
-//Close closes mananger
+// Close closes mananger
 func (s *manager) Close() error {
 	if s.client != nil {
 		CloseIdleConnections(s.client)
@@ -34,7 +34,7 @@ func (s *manager) Close() error {
 	return nil
 }
 
-//Scheme returns schmea
+// Scheme returns schmea
 func (s *manager) Scheme() string {
 	return Scheme
 }
@@ -46,7 +46,7 @@ func newManager(options ...storage.Option) *manager {
 	}
 }
 
-//New creates HTTP manager
+// New creates HTTP manager
 func New(options ...storage.Option) storage.Manager {
 	return newManager(options...)
 }

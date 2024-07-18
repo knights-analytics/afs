@@ -2,12 +2,12 @@ package mem
 
 import (
 	"context"
-	"github.com/viant/afs/option"
-	"github.com/viant/afs/storage"
+	"github.com/knights-analytics/afs/option"
+	"github.com/knights-analytics/afs/storage"
 	"os"
 )
 
-//List list directory or returns a file info
+// List list directory or returns a file info
 func (s *storager) List(ctx context.Context, location string, options ...storage.Option) ([]os.FileInfo, error) {
 	root := s.Root
 	object, err := root.Lookup(location, 0)
@@ -51,7 +51,7 @@ func (s *storager) List(ctx context.Context, location string, options ...storage
 	return []os.FileInfo{object}, nil
 }
 
-//Exists checks if location exists
+// Exists checks if location exists
 func (s *storager) Exists(ctx context.Context, location string, options ...storage.Option) (bool, error) {
 	root := s.Root
 	object, err := root.Lookup(location, 0)

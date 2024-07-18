@@ -3,13 +3,13 @@ package asset_test
 import (
 	"context"
 	"fmt"
-	"github.com/viant/afs"
-	"github.com/viant/afs/asset"
-	"github.com/viant/afs/storage"
+	"github.com/knights-analytics/afs"
+	"github.com/knights-analytics/afs/asset"
+	"github.com/knights-analytics/afs/storage"
 	"log"
 )
 
-//Example_Create crete test assets example
+// Example_Create crete test assets example
 func Example_Create() {
 
 	var useCases = []struct {

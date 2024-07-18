@@ -2,7 +2,7 @@ package http
 
 import (
 	"fmt"
-	"github.com/viant/afs/url"
+	"github.com/knights-analytics/afs/url"
 	"io/ioutil"
 	"net/http"
 )

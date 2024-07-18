@@ -4,7 +4,7 @@ import (
 	"context"
 	"embed"
 	"fmt"
-	"github.com/viant/afs/storage"
+	"github.com/knights-analytics/afs/storage"
 	"io"
 	"os"
 )

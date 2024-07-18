@@ -2,10 +2,10 @@ package afs
 
 import (
 	"context"
-	"github.com/viant/afs/file"
-	"github.com/viant/afs/option"
-	"github.com/viant/afs/storage"
-	"github.com/viant/afs/url"
+	"github.com/knights-analytics/afs/file"
+	"github.com/knights-analytics/afs/option"
+	"github.com/knights-analytics/afs/storage"
+	"github.com/knights-analytics/afs/url"
 )
 
 func (s *service) Move(ctx context.Context, sourceURL, destURL string, options ...storage.Option) error {

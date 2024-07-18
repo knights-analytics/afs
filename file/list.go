@@ -2,16 +2,16 @@ package file
 
 import (
 	"context"
+	"github.com/knights-analytics/afs/object"
+	"github.com/knights-analytics/afs/option"
+	"github.com/knights-analytics/afs/storage"
+	"github.com/knights-analytics/afs/url"
 	"github.com/pkg/errors"
-	"github.com/viant/afs/object"
-	"github.com/viant/afs/option"
-	"github.com/viant/afs/storage"
-	"github.com/viant/afs/url"
 	"os"
 	"path"
 )
 
-//List list directory or returns a file Info
+// List list directory or returns a file Info
 func List(ctx context.Context, URL string, options ...storage.Option) ([]storage.Object, error) {
 	baseURL, filePath := url.Base(URL, Scheme)
 	file, err := os.Open(Path(filePath))

@@ -3,10 +3,10 @@ package zip_test
 import (
 	"context"
 	"fmt"
+	"github.com/knights-analytics/afs"
+	"github.com/knights-analytics/afs/option"
+	"github.com/knights-analytics/afs/storage"
 	"github.com/stretchr/testify/assert"
-	"github.com/viant/afs"
-	"github.com/viant/afs/option"
-	"github.com/viant/afs/storage"
 	"path"
 	"runtime"
 	"testing"
@@ -16,10 +16,9 @@ type useCaseFn func(s afs.Service, ctx context.Context, url string) ([]storage.O
 
 func TestNew(t *testing.T) {
 	testCases(t, func(service afs.Service, ctx context.Context, url string) ([]storage.Object, error) {
-			return service.List(ctx, url)
+		return service.List(ctx, url)
 	})
 }
-
 
 func testCases(t *testing.T, callList useCaseFn) {
 	_, filename, _, _ := runtime.Caller(0)
@@ -64,6 +63,6 @@ func testCases(t *testing.T, callList useCaseFn) {
 
 func TestNoCache(t *testing.T) {
 	testCases(t, func(service afs.Service, ctx context.Context, url string) ([]storage.Object, error) {
-			return service.List(ctx, url, &option.NoCache{Source: option.NoCacheBaseURL})
+		return service.List(ctx, url, &option.NoCache{Source: option.NoCacheBaseURL})
 	})
 }

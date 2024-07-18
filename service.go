@@ -3,11 +3,11 @@ package afs
 import (
 	"context"
 	"fmt"
-	"github.com/viant/afs/file"
-	"github.com/viant/afs/mem"
-	"github.com/viant/afs/option"
-	"github.com/viant/afs/storage"
-	"github.com/viant/afs/url"
+	"github.com/knights-analytics/afs/file"
+	"github.com/knights-analytics/afs/mem"
+	"github.com/knights-analytics/afs/option"
+	"github.com/knights-analytics/afs/storage"
+	"github.com/knights-analytics/afs/url"
 	"io"
 	"io/ioutil"
 	"os"
@@ -16,7 +16,7 @@ import (
 	"time"
 )
 
-//Service represents storage storage
+// Service represents storage storage
 type Service interface {
 	storage.Lister
 	storage.Opener
@@ -26,34 +26,34 @@ type Service interface {
 	storage.Creator
 	storage.Walker
 	storage.Getter
-	//Exists returns true if resource exists
+	// Exists returns true if resource exists
 	Exists(ctx context.Context, URL string, options ...storage.Option) (bool, error)
 
-	//Download download bytes
+	// Download download bytes
 	Download(ctx context.Context, object storage.Object, options ...storage.Option) ([]byte, error)
 
-	//DownloadWithURL download bytes for URL
+	// DownloadWithURL download bytes for URL
 	DownloadWithURL(ctx context.Context, URL string, options ...storage.Option) ([]byte, error)
 
 	storage.Copier
 	storage.Mover
 
-	//Initialises manager for baseURL with storage options (i.e. auth)
+	// Initialises manager for baseURL with storage options (i.e. auth)
 	Init(ctx context.Context, baseURL string, options ...storage.Option) error
 
-	//NewWriter creates an upload writer
+	// NewWriter creates an upload writer
 	NewWriter(ctx context.Context, URL string, mode os.FileMode, options ...storage.Option) (io.WriteCloser, error)
 
-	//Closes all active managers
+	// Closes all active managers
 	CloseAll() error
-	//Closes matched active manager
+	// Closes matched active manager
 	Close(baseURL string) error
 
-	//ErrorCode returns an error code or zero
+	// ErrorCode returns an error code or zero
 	ErrorCode(scheme string, err error) int
 }
 
-//Service implementation
+// Service implementation
 type service struct {
 	faker    bool
 	mutex    *sync.RWMutex
@@ -184,14 +184,14 @@ func (s *service) newManager(ctx context.Context, scheme string, options ...stor
 	return provider(options...)
 }
 
-//Init initialises service
+// Init initialises service
 func (s *service) Init(ctx context.Context, baseURL string, options ...storage.Option) error {
 	baseURL = url.Normalize(baseURL, file.Scheme)
 	_, err := s.manager(ctx, baseURL, options)
 	return err
 }
 
-//Close closes storage manager for supplied baseURL
+// Close closes storage manager for supplied baseURL
 func (s *service) Close(baseURL string) error {
 	baseURL, _ = url.Base(baseURL, file.Scheme)
 	s.mutex.Lock()
@@ -203,7 +203,7 @@ func (s *service) Close(baseURL string) error {
 	return manager.Close()
 }
 
-//CloseAll closes all active managers
+// CloseAll closes all active managers
 func (s *service) CloseAll() error {
 	s.mutex.Lock()
 	defer s.mutex.Unlock()
@@ -266,7 +266,7 @@ func (s *service) manager(ctx context.Context, URL string, options []storage.Opt
 	return manager, err
 }
 
-//ErrorCode return error code
+// ErrorCode return error code
 func (s *service) ErrorCode(scheme string, err error) int {
 	if err == nil {
 		return 0
@@ -289,7 +289,7 @@ func newService(faker bool) *service {
 	}
 }
 
-//New returns a abstract storage service
+// New returns a abstract storage service
 func New() Service {
 	return newService(false)
 }

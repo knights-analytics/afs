@@ -2,11 +2,11 @@ package zip_test
 
 import (
 	"context"
+	"github.com/knights-analytics/afs"
+	"github.com/knights-analytics/afs/asset"
+	"github.com/knights-analytics/afs/file"
+	"github.com/knights-analytics/afs/zip"
 	"github.com/stretchr/testify/assert"
-	"github.com/viant/afs"
-	"github.com/viant/afs/asset"
-	"github.com/viant/afs/file"
-	"github.com/viant/afs/zip"
 	"io"
 	"io/ioutil"
 	"os"
